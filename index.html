@@ -567,6 +567,42 @@
     border-bottom: 1px solid var(--border);
     margin-bottom: 2.5rem;
   }
+  .footer-map-row {
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 2.5rem;
+    padding-bottom: 0;
+    overflow: hidden;
+  }
+  .footer-map-label {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .footer-map-label::before {
+    content: '';
+    width: 2rem;
+    height: 1px;
+    background: var(--amber);
+  }
+  .footer-map-frame {
+    width: 100%;
+    height: 280px;
+    border: none;
+    display: block;
+    filter: grayscale(1) contrast(1.1);
+    opacity: 0.75;
+    transition: filter 0.4s, opacity 0.4s;
+  }
+  .footer-map-frame:hover {
+    filter: grayscale(0) contrast(1);
+    opacity: 1;
+  }
   .footer-brand-name {
     font-family: var(--font-display);
     font-size: 2.2rem;
@@ -1019,6 +1055,17 @@
         KP. Warung Mangga RT002/01 No.59, Jl. Kyai Maja, Panunggangan, Kec. Pinang, Kota Tangerang, Banten 15143
       </div>
     </div>
+  </div>
+  <div class="footer-map-row">
+    <div class="footer-map-label">Lokasi Kami</div>
+    <iframe
+      class="footer-map-frame"
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.299254262384!2d106.63713227462746!3d-6.224216293763841!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69fbfd4184995d%3A0xe0b623b98eb481d3!2sHasan%20Konveksi!5e0!3m2!1sen!2sid!4v1742271114253!5m2!1sen!2sid"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      title="Lokasi Hasan Konveksi"
+    ></iframe>
   </div>
   <div class="footer-bottom">
     <span class="footer-copy">© 2025 HASAN KONVEKSI — ALL RIGHTS RESERVED</span>
