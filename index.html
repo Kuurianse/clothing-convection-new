@@ -49,7 +49,19 @@
   nav.scrolled {
     background: oklch(0.11 0.01 55 / 0.88);
     backdrop-filter: blur(16px);
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid oklch(0.22 0.01 55);
+  }
+  nav.scrolled .nav-logo {
+    color: oklch(0.94 0.02 80);
+  }
+  nav.scrolled .nav-logo span {
+    color: var(--amber);
+  }
+  nav.scrolled .nav-links a {
+    color: oklch(0.65 0.02 80);
+  }
+  nav.scrolled .nav-links a:hover {
+    color: var(--amber);
   }
   .nav-logo {
     font-family: var(--font-display);
