@@ -1,0 +1,1171 @@
+<!DOCTYPE html><html lang="id" style="--amber: #d4860a;"><head>
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hasan Konveksi — Konveksi Berkualitas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&amp;family=DM+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg: oklch(0.11 0.01 55);
+    --bg2: oklch(0.14 0.01 55);
+    --cream: oklch(0.94 0.02 80);
+    --cream-dim: oklch(0.65 0.02 80);
+    --amber: oklch(0.72 0.18 62);
+    --amber-dim: oklch(0.55 0.14 62);
+    --border: oklch(0.22 0.01 55);
+    --font-display: 'Bebas Neue', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+    --font-mono: 'DM Mono', monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--cream);
+    font-family: var(--font-body);
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 3rem;
+    mix-blend-mode: normal;
+    transition: background 0.4s, backdrop-filter 0.4s;
+  }
+  nav.scrolled {
+    background: oklch(0.11 0.01 55 / 0.88);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    letter-spacing: 0.08em;
+    color: var(--cream);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--amber); }
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+  .nav-links a {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--cream-dim);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--amber); }
+  .dark-toggle {
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--cream-dim);
+    width: 2.2rem;
+    height: 2.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: border-color 0.2s, color 0.2s;
+    flex-shrink: 0;
+  }
+  .dark-toggle:hover { border-color: var(--amber); color: var(--amber); }
+
+  .nav-cta {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--bg);
+    background: var(--amber);
+    padding: 0.65rem 1.5rem;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .nav-cta:hover { background: var(--cream); transform: translateY(-1px); }
+
+  /* ─── HERO ─── */
+  #hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: 1fr auto;
+    padding: 0 3rem;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .hero-bg-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--font-display);
+    font-size: clamp(10rem, 22vw, 22rem);
+    color: var(--hero-bg-text-color, oklch(0.15 0.01 55));
+    white-space: nowrap;
+    pointer-events: none;
+    user-select: none;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    opacity: 0.5;
+  }
+  .hero-inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-bottom: 5rem;
+    padding-top: 10rem;
+    position: relative;
+    z-index: 1;
+  }
+  .hero-label {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .hero-label::before {
+    content: '';
+    width: 2rem;
+    height: 1px;
+    background: var(--amber);
+  }
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(5rem, 13vw, 13rem);
+    line-height: 0.9;
+    letter-spacing: -0.01em;
+    color: var(--cream);
+    text-wrap: balance;
+  }
+  .hero-title .line2 {
+    color: transparent;
+    -webkit-text-stroke: 1.5px var(--cream);
+  }
+  .hero-bottom {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding-bottom: 3rem;
+    position: relative;
+    z-index: 1;
+    gap: 3rem;
+  }
+  .hero-desc {
+    max-width: 420px;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--cream-dim);
+  }
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-shrink: 0;
+  }
+  .btn-primary {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--bg);
+    background: var(--amber);
+    padding: 1rem 2rem;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-primary:hover { background: var(--cream); transform: translateY(-2px); }
+  .btn-ghost {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--cream-dim);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 2px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .btn-ghost:hover { color: var(--amber); border-color: var(--amber); }
+
+  .hero-scroll-hint {
+    position: absolute;
+    bottom: 3rem;
+    right: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--cream-dim);
+    z-index: 1;
+  }
+  .scroll-line {
+    width: 1px;
+    height: 4rem;
+    background: linear-gradient(to bottom, var(--amber), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.4; transform: scaleY(1); }
+    50% { opacity: 1; transform: scaleY(1.1); }
+  }
+
+  /* ─── MARQUEE ─── */
+  .marquee-wrap {
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    overflow: hidden;
+    padding: 1rem 0;
+    background: var(--bg2);
+  }
+  .marquee-track {
+    display: flex;
+    gap: 0;
+    animation: marquee 22s linear infinite;
+    white-space: nowrap;
+  }
+  .marquee-track:hover { animation-play-state: paused; }
+  .marquee-item {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    letter-spacing: 0.15em;
+    color: var(--cream-dim);
+    padding: 0 2.5rem;
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+  }
+  .marquee-item .dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--amber);
+    flex-shrink: 0;
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* ─── SECTIONS ─── */
+  section { padding: 8rem 3rem; }
+
+  .section-label {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 3rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .section-label::before {
+    content: '';
+    width: 2rem;
+    height: 1px;
+    background: var(--amber);
+  }
+
+  /* ─── ABOUT ─── */
+  #about {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: start;
+  }
+  .about-left {}
+  .about-heading {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    line-height: 1;
+    letter-spacing: 0.01em;
+    margin-bottom: 2rem;
+  }
+  .about-heading em {
+    font-style: italic;
+    color: var(--amber);
+    font-family: var(--font-body);
+    font-weight: 300;
+  }
+  .about-body {
+    color: var(--cream-dim);
+    font-size: 1.05rem;
+    line-height: 1.8;
+    max-width: 480px;
+  }
+  .about-right {
+    padding-top: 5rem;
+  }
+  .stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border: 1px solid var(--border);
+  }
+  .stat-item {
+    padding: 2.5rem 2rem;
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    transition: background 0.3s;
+  }
+  .stat-item:hover { background: var(--bg2); }
+  .stat-item:nth-child(even) { border-right: none; }
+  .stat-item:nth-child(3), .stat-item:nth-child(4) { border-bottom: none; }
+  .stat-num {
+    font-family: var(--font-display);
+    font-size: 3.5rem;
+    color: var(--amber);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+  .stat-label {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--cream-dim);
+    line-height: 1.5;
+  }
+
+  /* ─── SERVICES ─── */
+  #services {
+    border-top: 1px solid var(--border);
+    padding: 40px 30px;
+  }
+  .services-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 5rem;
+  }
+  .services-heading {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 6vw, 5rem);
+    line-height: 1;
+  }
+  .services-list { display: flex; flex-direction: column; }
+  .service-item {
+    display: grid;
+    grid-template-columns: 5rem 1fr auto;
+    align-items: center;
+    gap: 2rem;
+    padding: 2.5rem 2rem;
+    border-bottom: 1px solid var(--border);
+    cursor: default;
+    transition: padding 0.4s cubic-bezier(0.16,1,0.3,1);
+    position: relative;
+    overflow: hidden;
+  }
+  .service-item::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--amber);
+    transform: translateX(-100%);
+    transition: transform 0.4s cubic-bezier(0.16,1,0.3,1);
+    z-index: 0;
+  }
+  .service-item:hover::before { transform: translateX(0); }
+  .service-item > * { position: relative; z-index: 1; }
+  .service-item:hover .service-num,
+  .service-item:hover .service-name,
+  .service-item:hover .service-desc,
+  .service-item:hover .service-arrow { color: var(--bg) !important; }
+  .service-num {
+    font-family: var(--font-display);
+    font-size: 3.5rem;
+    color: var(--border);
+    line-height: 1;
+    transition: color 0.3s;
+  }
+  .service-content {}
+  .service-name {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.4rem;
+    transition: color 0.3s;
+  }
+  .service-desc {
+    font-size: 0.9rem;
+    color: var(--cream-dim);
+    line-height: 1.6;
+    max-width: 500px;
+    transition: color 0.3s;
+  }
+  .service-arrow {
+    font-size: 1.5rem;
+    color: var(--cream-dim);
+    transition: color 0.3s, transform 0.3s;
+  }
+  .service-item:hover .service-arrow { transform: translateX(6px) rotate(-45deg); }
+
+  /* ─── GALLERY ─── */
+  #gallery {
+    border-top: 1px solid var(--border);
+  }
+  .gallery-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 3rem;
+  }
+  .gallery-heading {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 6vw, 5rem);
+    line-height: 1;
+  }
+  .gallery-link {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--amber);
+    text-decoration: none;
+    border-bottom: 1px solid var(--amber-dim);
+    padding-bottom: 2px;
+    transition: color 0.2s;
+  }
+  .gallery-link:hover { color: var(--cream); }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: auto;
+    gap: 1rem;
+  }
+  .gallery-item {
+    position: relative;
+    overflow: hidden;
+    background: var(--bg2);
+    cursor: pointer;
+  }
+  .gallery-item:nth-child(1) { grid-column: span 5; grid-row: span 2; }
+  .gallery-item:nth-child(2) { grid-column: span 4; }
+  .gallery-item:nth-child(3) { grid-column: span 3; }
+  .gallery-item:nth-child(4) { grid-column: span 4; }
+  .gallery-item:nth-child(5) { grid-column: span 3; }
+  .gallery-item:nth-child(6) { grid-column: span 4; grid-row: span 2; }
+  .gallery-item:nth-child(7) { grid-column: span 3; }
+  .gallery-item:nth-child(8) { grid-column: span 5; }
+  .gallery-item:nth-child(9) { grid-column: span 4; }
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+  .gallery-item:hover img { transform: scale(1.04); }
+  .gallery-item:nth-child(1) { aspect-ratio: 3/4; }
+  .gallery-item:nth-child(6) { aspect-ratio: 2/3; }
+  .gallery-item:not(:nth-child(1)):not(:nth-child(6)) { aspect-ratio: 4/3; }
+  .gallery-overlay {
+    position: absolute;
+    inset: 0;
+    background: var(--amber);
+    opacity: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s;
+  }
+  .gallery-item:hover .gallery-overlay { opacity: 0.92; }
+  .gallery-overlay-text {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    letter-spacing: 0.1em;
+    color: var(--bg);
+    text-align: center;
+    padding: 1rem;
+  }
+
+  /* ─── CTA ─── */
+  #cta {
+    background: var(--amber);
+    padding: 8rem 3rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 4rem;
+    border-top: 1px solid var(--border);
+  }
+  .cta-heading {
+    font-family: var(--font-display);
+    font-size: clamp(3.5rem, 7vw, 6.5rem);
+    line-height: 0.95;
+    color: var(--bg);
+    letter-spacing: 0.01em;
+  }
+  .cta-right {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  .cta-desc {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: oklch(0.2 0.01 55);
+  }
+  .btn-dark {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--cream);
+    background: var(--bg);
+    padding: 1.1rem 2.5rem;
+    text-decoration: none;
+    display: inline-block;
+    align-self: flex-start;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-dark:hover { background: oklch(0.2 0.01 55); transform: translateY(-2px); }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: oklch(0.08 0.01 55);
+    padding: 5rem 3rem 3rem;
+    border-top: 1px solid var(--border);
+  }
+  .footer-top {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 4rem;
+    padding-bottom: 4rem;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 2.5rem;
+  }
+  .footer-brand-name {
+    font-family: var(--font-display);
+    font-size: 2.2rem;
+    letter-spacing: 0.06em;
+    color: oklch(0.94 0.02 80);
+    margin-bottom: 1rem;
+  }
+  .footer-brand-name span { color: var(--amber); }
+  .footer-tagline {
+    font-size: 0.9rem;
+    color: oklch(0.55 0.02 80);
+    line-height: 1.7;
+    max-width: 280px;
+  }
+  .footer-heading {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 1.5rem;
+  }
+  .footer-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+  .footer-links a {
+    font-size: 0.9rem;
+    color: oklch(0.55 0.02 80);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--amber); }
+  .footer-contact-item {
+    font-size: 0.85rem;
+    color: oklch(0.55 0.02 80);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+  }
+  .footer-contact-item strong {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: oklch(0.45 0.01 80);
+    margin-bottom: 0.3rem;
+    font-weight: 400;
+  }
+  .footer-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .footer-copy {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: oklch(0.38 0.01 55);
+    letter-spacing: 0.1em;
+  }
+
+  /* ─── SCROLL ANIMATIONS ─── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1);
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+
+  /* ─── RESPONSIVE ─── */
+
+  /* Tablet */
+  @media (max-width: 900px) {
+    nav { padding: 1.2rem 2rem; }
+    .nav-links { display: none; }
+
+    #hero { padding: 0 2rem; }
+    .hero-bottom { flex-direction: column; align-items: flex-start; gap: 2rem; padding-bottom: 5rem; }
+    .hero-scroll-hint { display: none; }
+
+    #about { grid-template-columns: 1fr; gap: 3rem; padding: 5rem 2rem; }
+    .about-right { padding-top: 0; }
+
+    #services { padding: 5rem 2rem; }
+    .service-item { grid-template-columns: 3.5rem 1fr auto; gap: 1rem; padding: 2rem 1rem; }
+    .service-num { font-size: 2.5rem; }
+
+    #gallery { padding: 5rem 2rem; }
+    .gallery-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+    .gallery-item { grid-column: span 1 !important; grid-row: span 1 !important; }
+
+    #cta { grid-template-columns: 1fr; padding: 5rem 2rem; gap: 2.5rem; }
+
+    footer { padding: 4rem 2rem 2.5rem; }
+    .footer-top { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+  }
+
+  /* Mobile */
+  @media (max-width: 600px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-cta { padding: 0.55rem 1rem; font-size: 0.62rem; }
+
+    #hero { padding: 0 1.5rem; min-height: 100svh; }
+    .hero-bg-text { font-size: 35vw; }
+    .hero-inner { padding-bottom: 3rem; padding-top: 8rem; }
+    .hero-title { font-size: clamp(4rem, 20vw, 7rem); }
+    .hero-bottom { padding-bottom: 4rem; }
+    .hero-desc { font-size: 0.9rem; }
+    .hero-actions { flex-direction: column; align-items: flex-start; gap: 1rem; }
+
+    .marquee-item { font-size: 0.9rem; }
+
+    #about { padding: 4rem 1.5rem; }
+    .about-heading { font-size: clamp(2.5rem, 10vw, 4rem); }
+    .stats-grid { grid-template-columns: 1fr 1fr; }
+    .stat-num { font-size: 2.8rem; }
+
+    #services { padding: 4rem 1.5rem; }
+    .services-heading { font-size: clamp(2.5rem, 10vw, 4rem); }
+    .service-item { grid-template-columns: 2.8rem 1fr auto; gap: 0.8rem; padding: 1.5rem 1rem; }
+    .service-num { font-size: 2rem; }
+    .service-name { font-size: 1.4rem; }
+    .service-desc { font-size: 0.82rem; }
+    .service-arrow { display: none; }
+
+    #gallery { padding: 4rem 1.5rem; }
+    .gallery-heading { font-size: clamp(2.5rem, 10vw, 4rem); }
+    .gallery-grid { grid-template-columns: 1fr; gap: 0.75rem; }
+    .gallery-item { grid-column: span 1 !important; grid-row: span 1 !important; }
+
+    #cta { padding: 4rem 1.5rem; gap: 2rem; }
+    .cta-heading { font-size: clamp(3rem, 12vw, 5rem); }
+
+    footer { padding: 3rem 1.5rem 2rem; }
+    .footer-top { grid-template-columns: 1fr; gap: 2rem; }
+    .footer-bottom { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+
+    #tweaks-panel { width: calc(100vw - 3rem); right: 1.5rem; bottom: 1.5rem; }
+
+    section { padding: 4rem 1.5rem; }
+  }
+
+  /* ─── TWEAKS PANEL ─── */
+  #tweaks-panel {
+    display: none;
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 999;
+    background: oklch(0.08 0.01 55);
+    border: 1px solid var(--border);
+    padding: 1.5rem;
+    width: 260px;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--cream);
+  }
+  #tweaks-panel.active { display: block; }
+  #tweaks-panel h4 {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    letter-spacing: 0.1em;
+    margin-bottom: 1.2rem;
+    color: var(--amber);
+  }
+  .tweak-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    gap: 0.8rem;
+  }
+  .tweak-label { color: var(--cream-dim); letter-spacing: 0.1em; text-transform: uppercase; font-size: 0.6rem; }
+  .tweak-row select, .tweak-row input[type=color] {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    color: var(--cream);
+    padding: 0.3rem 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    cursor: pointer;
+  }
+  .tweak-row input[type=color] { width: 2.5rem; height: 1.8rem; padding: 2px; cursor: pointer; }
+  .tweak-toggle {
+    display: flex;
+    gap: 0.5rem;
+  }
+  .tweak-toggle button {
+    flex: 1;
+    padding: 0.3rem 0;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    color: var(--cream-dim);
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+  }
+  .tweak-toggle button.active { background: var(--amber); color: var(--bg); border-color: var(--amber); }
+</style>
+<link id="gfont-Karla" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karla:wght@300;400;500;600;700&amp;display=swap"><link id="gfont-DM-Sans" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&amp;display=swap"></head>
+<body style="cursor: crosshair; font-family: DM Sans;" data-cc-id="cc-1">
+
+<!-- NAV -->
+<nav id="main-nav" class="scrolled">
+  <a href="#hero" class="nav-logo">HASAN <span>KONVEKSI</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+  </ul>
+  <div style="display:flex;align-items:center;gap:1rem;">
+    <button class="dark-toggle" id="dark-toggle" title="Toggle dark/light mode">☀️</button>
+    <a href="https://wa.me/6281211248535" class="nav-cta" target="_blank">Hubungi Kami</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg-text">KONVEKSI</div>
+
+  <div class="hero-inner">
+    <div class="hero-label">Est. Tangerang, Banten</div>
+    <h1 class="hero-title">
+      <span class="line1">HASAN</span><br>
+      <span class="line2">KONVEKSI</span>
+    </h1>
+  </div>
+
+  <div class="hero-bottom">
+    <p class="hero-desc">
+      Melayani pembuatan berbagai jenis pakaian sesuai permintaan — kaos, jaket, seragam, hingga custom design — dengan kualitas terbaik dan harga bersaing.
+    </p>
+    <div class="hero-actions">
+      <a href="https://wa.me/6281211248535" class="btn-primary" target="_blank">Mulai Proyek →</a>
+      <a href="#gallery" class="btn-ghost">Lihat Galeri</a>
+    </div>
+  </div>
+
+  <div class="hero-scroll-hint">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <!-- doubled for seamless loop -->
+    <div class="marquee-item"><span>Kaos Custom</span><span class="dot"></span></div>
+    <div class="marquee-item"><span>Jaket &amp; Hoodie</span><span class="dot"></span></div>
+    <div class="marquee-item"><span>Seragam Kerja</span><span class="dot"></span></div>
+    <div class="marquee-item"><span>Sablon &amp; Bordir</span><span class="dot"></span></div>
+    <div class="marquee-item"><span>Produksi Massal</span><span class="dot"></span></div>
+    <div class="marquee-item"><span>Custom Design</span><span class="dot"></span></div>
+    <div class="marquee-item"><span>Kualitas Premium</span><span class="dot"></span></div>
+    <div class="marquee-item"><span>Pengiriman Cepat</span><span class="dot"></span></div>
+    <!-- repeat -->
+    <div class="marquee-item"><span>Kaos Custom</span><span class="dot"></span></div>
+    <div class="marquee-item"><span>Jaket &amp; Hoodie</span><span class="dot"></span></div>
+    <div class="marquee-item"><span>Seragam Kerja</span><span class="dot"></span></div>
+    <div class="marquee-item"><span>Sablon &amp; Bordir</span><span class="dot"></span></div>
+    <div class="marquee-item"><span>Produksi Massal</span><span class="dot"></span></div>
+    <div class="marquee-item"><span>Custom Design</span><span class="dot"></span></div>
+    <div class="marquee-item"><span>Kualitas Premium</span><span class="dot"></span></div>
+    <div class="marquee-item"><span>Pengiriman Cepat</span><span class="dot"></span></div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-left">
+    <div class="section-label reveal visible">001 — Tentang Kami</div>
+    <h2 class="about-heading reveal reveal-delay-1 visible">
+      Dibuat dengan<br><em>ketelitian</em>,<br>dikirim tepat<br>waktu.
+    </h2>
+    <p class="about-body reveal reveal-delay-2 visible">
+      Dengan pengalaman bertahun-tahun di industri konveksi, kami menerima segala jenis pesanan — mulai dari skala kecil hingga produksi massal. Setiap jahitan dikerjakan oleh pengrajin berpengalaman menggunakan bahan pilihan dari pemasok tepercaya.
+    </p>
+  </div>
+  <div class="about-right reveal reveal-delay-2 visible">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <div class="stat-num">10+</div>
+        <div class="stat-label">Tahun<br>Pengalaman</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">500+</div>
+        <div class="stat-label">Klien<br>Terlayani</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Kustom<br>Penuh</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">MOQ 1</div>
+        <div class="stat-label">Min. Order<br>Fleksibel</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="services-header">
+    <div>
+      <div class="section-label reveal visible">002 — Layanan</div>
+      <h2 class="services-heading reveal reveal-delay-1 visible">APA<br>YANG<br>KAMI BUAT</h2>
+    </div>
+  </div>
+  <div class="services-list">
+    <div class="service-item reveal visible">
+      <span class="service-num">01</span>
+      <div class="service-content">
+        <div class="service-name">KONVEKSI PAKAIAN</div>
+        <div class="service-desc">Kaos, jaket, hoodie, celana, seragam — semua jenis pakaian sesuai kebutuhan pelanggan.</div>
+      </div>
+      <span class="service-arrow">↗</span>
+    </div>
+    <div class="service-item reveal reveal-delay-1 visible">
+      <span class="service-num">02</span>
+      <div class="service-content">
+        <div class="service-name">CUSTOM DESAIN &amp; MODEL</div>
+        <div class="service-desc">Desain, ukuran, dan material yang bisa disesuaikan sepenuhnya sesuai keinginan Anda.</div>
+      </div>
+      <span class="service-arrow">↗</span>
+    </div>
+    <div class="service-item reveal reveal-delay-2 visible">
+      <span class="service-num">03</span>
+      <div class="service-content">
+        <div class="service-name">SABLON &amp; BORDIR</div>
+        <div class="service-desc">Layanan sablon dan bordir profesional untuk menambah nilai estetika pada setiap produk.</div>
+      </div>
+      <span class="service-arrow">↗</span>
+    </div>
+    <div class="service-item reveal reveal-delay-3 visible">
+      <span class="service-num">04</span>
+      <div class="service-content">
+        <div class="service-name">PRODUKSI SKALA KECIL &amp; BESAR</div>
+        <div class="service-desc">Efisien dalam menangani pesanan beragam, baik dalam jumlah kecil maupun besar.</div>
+      </div>
+      <span class="service-arrow">↗</span>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="gallery-header">
+    <div>
+      <div class="section-label reveal visible">003 — Galeri</div>
+      <h2 class="gallery-heading reveal reveal-delay-1 visible">PRODUK<br>KAMI</h2>
+    </div>
+    <a href="#gallery" class="gallery-link reveal reveal-delay-2 visible">Lihat Semua →</a>
+  </div>
+
+  <div class="gallery-grid">
+    <div class="gallery-item reveal visible">
+      <img src="assets/images/produk-1.jpg" alt="Foto Produk Unggulan">
+      <div class="gallery-overlay"><span class="gallery-overlay-text">PRODUK 1</span></div>
+    </div>
+    <div class="gallery-item reveal reveal-delay-1 visible">
+      <img src="assets/images/produk-2.jpg" alt="Kaos Custom">
+      <div class="gallery-overlay"><span class="gallery-overlay-text">PRODUK 2</span></div>
+    </div>
+    <div class="gallery-item reveal reveal-delay-2 visible">
+      <img src="assets/images/produk-3.jpg" alt="Jaket">
+      <div class="gallery-overlay"><span class="gallery-overlay-text">PRODUK 3</span></div>
+    </div>
+    <div class="gallery-item reveal reveal-delay-1 visible">
+      <img src="assets/images/produk-4.jpg" alt="Hoodie">
+      <div class="gallery-overlay"><span class="gallery-overlay-text">PRODUK 4</span></div>
+    </div>
+    <div class="gallery-item reveal reveal-delay-2 visible">
+      <img src="assets/images/produk-5.jpg" alt="Seragam">
+      <div class="gallery-overlay"><span class="gallery-overlay-text">PRODUK 5</span></div>
+    </div>
+    <div class="gallery-item reveal reveal-delay-3 visible">
+      <img src="assets/images/produk-6.jpg" alt="Bordir Detail">
+      <div class="gallery-overlay"><span class="gallery-overlay-text">PRODUK 6</span></div>
+    </div>
+    <div class="gallery-item reveal reveal-delay-1 visible">
+      <img src="assets/images/produk-7.jpg" alt="Celana">
+      <div class="gallery-overlay"><span class="gallery-overlay-text">PRODUK 7</span></div>
+    </div>
+    <div class="gallery-item reveal reveal-delay-2 visible">
+      <img src="assets/images/produk-8.jpg" alt="Sablon">
+      <div class="gallery-overlay"><span class="gallery-overlay-text">PRODUK 8</span></div>
+    </div>
+    <div class="gallery-item reveal reveal-delay-3 visible">
+      <img src="assets/images/produk-9.jpg" alt="Koleksi Terbaru">
+      <div class="gallery-overlay"><span class="gallery-overlay-text">PRODUK 9</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <h2 class="cta-heading reveal visible">SIAP<br>MULAI<br>PROYEK<br>ANDA?</h2>
+  <div class="cta-right">
+    <p class="cta-desc reveal reveal-delay-1 visible">
+      Hubungi kami melalui WhatsApp atau kunjungi langsung untuk konsultasi gratis. Kami siap mewujudkan kebutuhan pakaian Anda dari awal hingga jadi.
+    </p>
+    <a href="https://wa.me/6281211248535" class="btn-dark reveal reveal-delay-2 visible" target="_blank">
+      WhatsApp Sekarang →
+    </a>
+    <div class="reveal reveal-delay-3 visible" style="font-family:var(--font-mono);font-size:0.65rem;letter-spacing:0.1em;color:oklch(0.3 0.01 55);">
+      +62 812-1124-8535
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand-name">HASAN <span>KONVEKSI</span></div>
+      <p class="footer-tagline">Solusi terbaik untuk segala kebutuhan pakaian Anda. Kualitas terjamin, harga bersaing.</p>
+    </div>
+    <div>
+      <div class="footer-heading">Navigasi</div>
+      <ul class="footer-links">
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-heading">Kontak</div>
+      <div class="footer-contact-item">
+        <strong>Telepon / WA</strong>
+        +62 812-1124-8535
+      </div>
+      <div class="footer-contact-item">
+        <strong>Alamat</strong>
+        KP. Warung Mangga RT002/01 No.59, Jl. Kyai Maja, Panunggangan, Kec. Pinang, Kota Tangerang, Banten 15143
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2025 HASAN KONVEKSI — ALL RIGHTS RESERVED</span>
+    <span class="footer-copy">TANGERANG, BANTEN, INDONESIA</span>
+  </div>
+</footer>
+
+<!-- TWEAKS PANEL -->
+<div id="tweaks-panel" class="">
+  <h4>TWEAKS</h4>
+  <div class="tweak-row">
+    <span class="tweak-label">Accent Color</span>
+    <input type="color" id="tweak-accent" value="#d4860a">
+  </div>
+  <div class="tweak-row">
+    <span class="tweak-label">Font Style</span>
+    <div class="tweak-toggle">
+      <button class="active" data-font="bebas" onclick="setFont(this,'Bebas Neue')">Editorial</button>
+      <button data-font="playfair" onclick="setFont(this,'Playfair Display')">Klasik</button>
+    </div>
+  </div>
+  <div class="tweak-row">
+    <span class="tweak-label">Theme</span>
+    <div class="tweak-toggle">
+      <button class="active" data-theme="dark" onclick="setTheme(this,'dark')">Gelap</button>
+      <button data-theme="light" onclick="setTheme(this,'light')">Terang</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// Dark mode toggle
+const toggleBtn = document.getElementById('dark-toggle');
+let isDark = true;
+function applyTheme(dark) {
+  isDark = dark;
+  toggleBtn.textContent = dark ? '☀️' : '🌙';
+  if (dark) {
+    document.documentElement.style.setProperty('--bg', 'oklch(0.11 0.01 55)');
+    document.documentElement.style.setProperty('--bg2', 'oklch(0.14 0.01 55)');
+    document.documentElement.style.setProperty('--cream', 'oklch(0.94 0.02 80)');
+    document.documentElement.style.setProperty('--cream-dim', 'oklch(0.65 0.02 80)');
+    document.documentElement.style.setProperty('--border', 'oklch(0.22 0.01 55)');
+    document.documentElement.style.setProperty('--hero-bg-text-color', 'oklch(0.17 0.01 55)');
+    document.body.style.background = 'oklch(0.11 0.01 55)';
+  } else {
+    document.documentElement.style.setProperty('--bg', 'oklch(0.97 0.01 80)');
+    document.documentElement.style.setProperty('--bg2', 'oklch(0.93 0.01 80)');
+    document.documentElement.style.setProperty('--cream', 'oklch(0.15 0.01 55)');
+    document.documentElement.style.setProperty('--cream-dim', 'oklch(0.4 0.01 55)');
+    document.documentElement.style.setProperty('--border', 'oklch(0.82 0.01 80)');
+    document.documentElement.style.setProperty('--hero-bg-text-color', 'oklch(0.88 0.015 80)');
+    document.body.style.background = 'oklch(0.97 0.01 80)';
+  }
+  localStorage.setItem('hk-theme', dark ? 'dark' : 'light');
+}
+toggleBtn.addEventListener('click', () => applyTheme(!isDark));
+// Restore saved theme
+const savedTheme = localStorage.getItem('hk-theme');
+if (savedTheme === 'light') applyTheme(false);
+const nav = document.getElementById('main-nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// Scroll reveal
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12 });
+reveals.forEach(el => observer.observe(el));
+
+// Hero parallax on bg text
+const bgText = document.querySelector('.hero-bg-text');
+function updateBgText() {
+  if (bgText) bgText.style.transform = `translate(-50%, calc(-50% + ${window.scrollY * 0.3}px))`;
+}
+window.addEventListener('scroll', updateBgText);
+// Reset on load so it's always centered at scroll=0
+window.addEventListener('load', () => { window.scrollTo(0, 0); updateBgText(); });
+updateBgText();
+
+// Tweaks
+window.addEventListener('message', e => {
+  if (e.data?.type === '__activate_edit_mode') document.getElementById('tweaks-panel').classList.add('active');
+  if (e.data?.type === '__deactivate_edit_mode') document.getElementById('tweaks-panel').classList.remove('active');
+});
+window.parent.postMessage({type: '__edit_mode_available'}, '*');
+
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "accentColor": "#d4860a",
+  "fontStyle": "bebas",
+  "theme": "dark"
+}/*EDITMODE-END*/;
+
+// Accent color
+document.getElementById('tweak-accent').addEventListener('input', e => {
+  document.documentElement.style.setProperty('--amber', e.target.value);
+  window.parent.postMessage({type:'__edit_mode_set_keys', edits:{accentColor: e.target.value}}, '*');
+});
+
+function setFont(btn, fontName) {
+  document.querySelectorAll('[data-font]').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.documentElement.style.setProperty('--font-display', `'${fontName}', sans-serif`);
+  // load font if Playfair
+  if (fontName === 'Playfair Display') {
+    const l = document.createElement('link');
+    l.rel = 'stylesheet';
+    l.href = 'https://fonts.googleapis.com/css2?family=Playfair+Display:ital@0;1&display=swap';
+    document.head.appendChild(l);
+  }
+  window.parent.postMessage({type:'__edit_mode_set_keys', edits:{fontStyle: btn.dataset.font}}, '*');
+}
+
+function setTheme(btn, theme) {
+  document.querySelectorAll('[data-theme]').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  if (theme === 'light') {
+    document.documentElement.style.setProperty('--bg', 'oklch(0.97 0.01 80)');
+    document.documentElement.style.setProperty('--bg2', 'oklch(0.93 0.01 80)');
+    document.documentElement.style.setProperty('--cream', 'oklch(0.15 0.01 55)');
+    document.documentElement.style.setProperty('--cream-dim', 'oklch(0.4 0.01 55)');
+    document.documentElement.style.setProperty('--border', 'oklch(0.82 0.01 80)');
+    document.body.style.background = 'oklch(0.97 0.01 80)';
+  } else {
+    document.documentElement.style.setProperty('--bg', 'oklch(0.11 0.01 55)');
+    document.documentElement.style.setProperty('--bg2', 'oklch(0.14 0.01 55)');
+    document.documentElement.style.setProperty('--cream', 'oklch(0.94 0.02 80)');
+    document.documentElement.style.setProperty('--cream-dim', 'oklch(0.65 0.02 80)');
+    document.documentElement.style.setProperty('--border', 'oklch(0.22 0.01 55)');
+    document.body.style.background = 'oklch(0.11 0.01 55)';
+  }
+  window.parent.postMessage({type:'__edit_mode_set_keys', edits:{theme}}, '*');
+}
+
+// Apply saved tweaks
+if (TWEAK_DEFAULTS.accentColor) {
+  document.getElementById('tweak-accent').value = TWEAK_DEFAULTS.accentColor;
+  document.documentElement.style.setProperty('--amber', TWEAK_DEFAULTS.accentColor);
+}
+</script>
+
+
+</body></html>
